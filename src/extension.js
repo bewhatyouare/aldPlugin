@@ -5,7 +5,6 @@ const importJs = require('./nlImport.js');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	console.log('activate......')
 	//导入clientJs
 	const importClientJs = vscode.commands.registerCommand(
 		'aldpage.clientJs',
