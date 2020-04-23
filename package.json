@@ -1,0 +1,61 @@
+{
+	"name": "aldpage",
+	"displayName": "AldPage",
+	"description": "fast generate ald page ",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.44.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:aldpage.clientJs",
+		"onCommand:aldpage.Header"
+	],
+	"main": "./src/extension.js",
+	"contributes": {
+		"commands": [
+			
+			{
+				"command": "aldpage.clientJs",
+				"title": "导入客户端交互clientJs"
+			},
+			{
+				"command": "aldpage.Header",
+				"title": "导入头部组件"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+				"when": "editorFocus && resourceLangId == vue",
+				"command": "aldpage.clientJs",
+				"group": "import_1"
+				},
+				{
+				"when": "editorFocus",
+				"command": "aldpage.Header",
+				"group": "import_1"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+        "@types/vscode": "^1.44.0",
+        "@types/glob": "^7.1.1",
+        "@types/mocha": "^7.0.2",
+        "@types/node": "^13.11.0",
+        "eslint": "^6.8.0",
+        "glob": "^7.1.6",
+        "mocha": "^7.1.1",
+        "typescript": "^3.8.3",
+        "vscode-test": "^1.3.0"
+    }
+
+}
