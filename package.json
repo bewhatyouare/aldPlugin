@@ -16,7 +16,6 @@
 	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
-			
 			{
 				"command": "aldpage.clientJs",
 				"title": "导入客户端交互clientJs"
@@ -39,7 +38,25 @@
 				"group": "import_1"
 				}
 			]
-		}
+		},
+		"keybindings":[
+			{
+				"command": "aldpage.smartImport",
+				"key": "tab",
+                "when": "editorTextFocus && !suggestWidgetVisible && !inSnippetMode && !editorHasMultipleSelections",
+				"title": "阿拉盯智能导入"
+			}
+		],
+		"configuration": {
+            "title": "%ext.smartImport.title%",
+            "properties": {
+                "smartenter.chars": {
+                    "type": "string",
+					"default": ")]}>/|;:=-,'\"",
+					"description": "%ext.smartImport.chars%"
+                }
+            }
+        }
 	},
 	"scripts": {
 		"lint": "eslint .",

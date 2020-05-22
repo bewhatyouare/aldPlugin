@@ -1,11 +1,12 @@
 const vscode = require('vscode');
 const importJs = require('./nlImport.js');
+const smartImport = require('./smartImport.js');
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	console.log('activate......')
+
 	//导入clientJs
 	const importClientJs = vscode.commands.registerCommand(
 		'aldpage.clientJs',
@@ -22,6 +23,15 @@ function activate(context) {
 		}
 	)
 	context.subscriptions.push(importHeader);
+	
+	const smart = vscode.commands.registerCommand(
+		'aldpage.smartImport',
+		() => {
+			smartImport();
+		}
+	)
+	context.subscriptions.push(smart);
+
 }
 exports.activate = activate;
 
