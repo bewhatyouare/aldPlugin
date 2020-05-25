@@ -23,8 +23,8 @@ function activate(context) {
 		}
 	)
 	context.subscriptions.push(importHeader);
-	
-	const smart = vscode.commands.registerCommand(
+	//vscode.commands.registerTextEditorCommand  文本编辑器命令
+	const smart = vscode.commands.registerTextEditorCommand(
 		'aldpage.smartImport',
 		() => {
 			smartImport();
