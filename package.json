@@ -1,6 +1,7 @@
 {
 	"name": "aldpage",
-	"displayName": "AldPage",
+	"displayName": "smartImport",
+	"publisher": "qhuang",
 	"description": "fast generate ald page ",
 	"version": "0.0.1",
 	"engines": {
@@ -10,13 +11,15 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:aldpage.clientJs",
-		"onCommand:aldpage.Header"
+		"*"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
-			
+			{
+				"command": "aldpage.smartImport",
+				"title": "智能导入"
+			},
 			{
 				"command": "aldpage.clientJs",
 				"title": "导入客户端交互clientJs"
@@ -39,7 +42,20 @@
 				"group": "import_1"
 				}
 			]
-		}
+		},
+		"snippets": [
+            {
+                "language": "javascript",
+                "path": "./snippets/javascript.json"
+            }
+        ],
+		"keybindings":[
+			{
+				"command": "aldpage.smartImport",
+				"key": "tab",
+				"when": "editorTextFocus && resourceLangId == vue"
+			}
+		]
 	},
 	"scripts": {
 		"lint": "eslint .",

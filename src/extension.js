@@ -1,5 +1,6 @@
 const vscode = require('vscode');
 const importJs = require('./nlImport.js');
+const smartImport = require('./smartImport.js')
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -21,6 +22,15 @@ function activate(context) {
 		}
 	)
 	context.subscriptions.push(importHeader);
+	//vscode.commands.registerTextEditorCommand 文本编辑器命令
+	const smart = vscode.commands.registerTextEditorCommand(
+		'aldpage.smartImport',
+		() => {
+			smartImport();
+		}
+	)
+	context.subscriptions.push(smart);
+
 }
 exports.activate = activate;
 

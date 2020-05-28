@@ -1,0 +1,41 @@
+{
+    "clientjs":{
+        "path":"import ClientJs from '@/base/clientjs';\n",
+        "desc":"客户端交互JS"
+    },
+    "storage":{
+        "path":"import Storage from '@/base/storage';\n",
+        "desc":"本地存储交互JS"
+    },
+    "authenct":{
+        "path":"import Authenct from 'components/common/Authenticate/Authenticate';\n",
+        "desc":"鉴权框"
+    },
+    "header":{
+      "path":"import Header from 'components/common/Header.vue';\n",
+      "isComponent":true,
+      "desc":"头部组件"
+    },
+    "VillageAddress":{
+        "path":"import VillAdress from 'components/common/VillageAddress/VillageAddress';\n",
+        "desc":"小区地址"
+    },
+    "NlDropdown":{
+        "path":"import NlDropdown from 'components/common/NlDropdown/dropdown.js';\n",
+        "isComponent":true,
+        "desc":"下拉框组件"
+    },
+    "NoDataPage":{
+        "path":"import NoDataPage from 'components/common/NoDataPage.vue';\n",
+        "isComponent":true,
+        "desc":"暂无数据组件"
+    },
+    "NlDatePicker":{
+        "path":"import NlDatePicker from 'components/common/NlDatePick/datePicker.js';\n",
+        "desc":"暂无数据组件"
+    },
+    "NlButton":{
+        "path":"import NlButton from 'components/common/NlButton';\n",
+        "desc":"通用按钮"
+    }
+}
