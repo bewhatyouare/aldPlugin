@@ -25,19 +25,16 @@ function provideCompletionItems(document, position) {
     } else {
         return;
     }
-    
-    console.info(json);
-    // 只截取到光标位置为止
-    console.info(lineText);
 
-    // 简单匹配，只要当前光标前的字符串为`this.dependencies.`都自动带出所有的依赖
-    if(/(^|=| )\w+\.dependencies\.$/g.test(lineText)) {
-        const dependencies = Object.keys(json.dependencies || {}).concat(Object.keys(json.devDependencies || {}));
-        return dependencies.map(dep => {
-            // vscode.CompletionItemKind 表示提示的类型
-            return new vscode.CompletionItem(dep, vscode.CompletionItemKind.Field);
-        })
-    }
+
+    // // 简单匹配，只要当前光标前的字符串为`this.dependencies.`都自动带出所有的依赖
+    // if(/(^|=| )\w+\.dependencies\.$/g.test(lineText)) {
+    //     const dependencies = Object.keys(json.dependencies || {}).concat(Object.keys(json.devDependencies || {}));
+    //     return dependencies.map(dep => {
+    //         // vscode.CompletionItemKind 表示提示的类型
+    //         return new vscode.CompletionItem(dep, vscode.CompletionItemKind.Field);
+    //     })
+    // }
 }
 
 function findImportPath(lineText){
