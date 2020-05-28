@@ -1,6 +1,7 @@
 {
 	"name": "aldpage",
-	"displayName": "AldPage",
+	"displayName": "smartImport",
+	"publisher": "qhuang",
 	"description": "fast generate ald page ",
 	"version": "0.0.1",
 	"engines": {
