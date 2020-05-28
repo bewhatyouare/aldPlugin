@@ -52,7 +52,7 @@
 			{
 				"command": "aldpage.smartImport",
 				"key": "tab",
-				"when": "editorTextFocus"
+				"when": "editorTextFocus && resourceLangId == vue"
 			}
 		]
 	},
