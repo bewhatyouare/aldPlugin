@@ -16,6 +16,10 @@
 	"contributes": {
 		"commands": [
 			{
+				"command": "aldpage.smartImport",
+				"title": "智能导入"
+			},
+			{
 				"command": "aldpage.clientJs",
 				"title": "导入客户端交互clientJs"
 			},
@@ -45,16 +49,12 @@
             }
         ],
 		"keybindings":[
-
-			
-		],
-		"configuration": {
-            "title": "智能提示",
-			"type": "object",
-            "properties": {
-                
-            }
-        }
+			{
+				"command": "aldpage.smartImport",
+				"key": "tab",
+				"when": "editorTextFocus"
+			}
+		]
 	},
 	"scripts": {
 		"lint": "eslint .",
