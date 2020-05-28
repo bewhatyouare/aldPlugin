@@ -1,0 +1,34 @@
+{
+    "http.get": {
+        "prefix": "http.get",
+        "body": [
+            "this.\\$http.get('$1').then(res => {",
+            "    let {retCode,retMsg,data} = res.data;",
+            "    if (retCode == '0') {//成功的情况",
+            "      $2",
+            "    } else {",
+            "      this.\\$alert(retMsg || '请求失败');",
+            "    }",
+            "}).catch(err => {",
+            "  this.\\$alert(err)",
+            "})"
+        ],
+        "description": "阿拉盯get请求"
+    },
+    "http.post": {
+        "prefix": "http.post",
+        "body": [
+            "this.\\$http.post('$1','$2').then(res => {",
+            "    let {retCode,retMsg,data} = res.data;",
+            "    if (retCode == '0') {//成功的情况",
+            "      $3",
+            "    } else {",
+            "      this.\\$alert(retMsg || '请求失败');",
+            "    }",
+            "}).catch(err => {",
+            "  this.\\$alert(err)",
+            "})"
+        ],
+        "description": "阿拉盯post请求"
+    }
+}

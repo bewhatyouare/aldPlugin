@@ -1,12 +1,11 @@
 const vscode = require('vscode');
 const importJs = require('./nlImport.js');
-const smartImport = require('./smartImport.js');
+
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-
 	//导入clientJs
 	const importClientJs = vscode.commands.registerCommand(
 		'aldpage.clientJs',
@@ -24,13 +23,14 @@ function activate(context) {
 	)
 	context.subscriptions.push(importHeader);
 	//vscode.commands.registerTextEditorCommand  文本编辑器命令
-	const smart = vscode.commands.registerTextEditorCommand(
-		'aldpage.smartImport',
-		() => {
-			smartImport();
-		}
-	)
-	context.subscriptions.push(smart);
+	// const smart = vscode.commands.registerTextEditorCommand(
+	// 	'aldpage.smartImport',
+	// 	() => {
+	// 		smartImport();
+	// 	}
+	// )
+	// context.subscriptions.push(smart);
+	require('./smartImport.js')(context); // 智能导入
 
 }
 exports.activate = activate;

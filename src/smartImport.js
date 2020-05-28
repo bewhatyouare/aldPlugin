@@ -1,43 +1,80 @@
 const vscode = require('vscode');
-const path = require('path');
-const fs = require('fs');
-
-const smartImport = () => {
-    console.log('document');
-    console.info('adfdf');
-    let watcher = vscode.workspace.createFileSystemWatcher(glob);
-    let workspace = undefined;
-    // watcher.onDidChange((file) => {
-    //     vscode.commands.executeCommand('aldpage.smartImport', { workspace, file, edit: true });
-    // });
-    
-}
+//const util = require('./util');
+const importTool = require('./importTool.js')
 
 /**
- * 鼠标悬停提示，当鼠标停在package.json的dependencies或者devDependencies时，
- * 自动显示对应包的名称、版本号和许可协议
+ * 根据用户的输入智能添加导入提示
  * @param {*} document 
  * @param {*} position 
- * @param {*} token 
  */
-function provideHover(document, position, token) {
-    const fileName    = document.fileName;
-    const workDir     = path.dirname(fileName);
-    const word        = document.getText(document.getWordRangeAtPosition(position));
-    console.log('进入provideHover方法');
-    if (/\/package\.json$/.test(fileName) + fileName) {
-        console.log('进入provideHover方法');
-        const json = document.getText();
-        if (new RegExp(`"(dependencies|devDependencies)":\\s*?\\{[\\s\\S]*?${word.replace(/\//g, '\\/')}[\\s\\S]*?\\}`, 'gm').test(json)) {
-            let destPath = `${workDir}/node_modules/${word.replace(/"/g, '')}/package.json`;
-            if (fs.existsSync(destPath)) {
-                const content = require(destPath);
-                console.log('hover已生效');
-                // hover内容支持markdown语法
-                return new vscode.Hover(`* **名称**：${content.name}\n* **版本**：${content.version}\n* **许可协议**：${content.license}`);
-            }
+function provideCompletionItems(document, position) {
+    const line = document.lineAt(position);
+    
+    let curLineNo = line._line;
+    const lineText = line.text.substring(0, position.character);
+
+    let startLineNo = importTool.getLinePosition(document, '<script>');
+    //找到export default的位置
+    let vuejsStartIdx = importTool.getLinePosition(document,'export default');
+
+    console.info(startLineNo,curLineNo,vuejsStartIdx);
+
+    // 判断当前是不是在<script>标签内，并且标签内的引入外部文件的区域
+    if(curLineNo > startLineNo && curLineNo < vuejsStartIdx){//在<script> 和 export default之间
+        findImportPath(lineText);
+    } else {
+        return;
+    }
+    
+    console.info(json);
+    // 只截取到光标位置为止
+    console.info(lineText);
+
+    // 简单匹配，只要当前光标前的字符串为`this.dependencies.`都自动带出所有的依赖
+    if(/(^|=| )\w+\.dependencies\.$/g.test(lineText)) {
+        const dependencies = Object.keys(json.dependencies || {}).concat(Object.keys(json.devDependencies || {}));
+        return dependencies.map(dep => {
+            // vscode.CompletionItemKind 表示提示的类型
+            return new vscode.CompletionItem(dep, vscode.CompletionItemKind.Field);
+        })
+    }
+}
+
+function findImportPath(lineText){
+    let curText = lineText.toLocaleLowerCase();
+    console.info(curText);
+    //智能引入的文件路径的配置文件
+    const json = require(`../snippets/importPath.json`);
+    let keys = Object.keys(json);
+    for(let key in json){
+        let value = json[key];
+        if(~key.indexOf(curText)){
+            console.info(key,value.path);
+            return new vscode.CompletionItem('adfadfadfadfadf23424', vscode.CompletionItemKind.Keyword);
         }
     }
 }
 
-module.exports = smartImport
+/**
+ * 光标选中当前自动补全item时触发动作，一般情况下无需处理
+ * @param {*} item 
+ * @param {*} token 
+ */
+function resolveCompletionItem(item, token) {
+    return null;
+}
+
+module.exports = function(context) {
+    
+    
+    // 获取所有命令
+    // vscode.commands.getCommands().then(allCommands => {
+    //     console.log('所有命令：', allCommands);
+    //     vscode.window.showInformationMessage(allCommands);
+    // });
+    // 注册代码建议提示，只有当按下“tab”时才触发
+    context.subscriptions.push(vscode.languages.registerCompletionItemProvider('vue', {
+        provideCompletionItems,
+        resolveCompletionItem
+    }, ''));
+};

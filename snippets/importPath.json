@@ -1,0 +1,19 @@
+{
+    "clientjs":{
+        "path":"import ClientJs from '@/base/clientjs'\n",
+        "desc":"客户端交互JS"
+    },
+    "storage":{
+        "path":"import Storage from '@/base/storage'\n",
+        "desc":"本地存储交互JS"
+    },
+    "authenct":{
+        "path":"import Authenct from 'components/common/Authenticate/Authenticate'\n",
+        "desc":"鉴权框"
+    },
+    "header":{
+      "path":"import Header from 'components/common/Header.vue'\n",
+      "isComponent":true,
+      "desc":"头部组件"
+    }
+}

@@ -10,8 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:aldpage.clientJs",
-		"onCommand:aldpage.Header"
+		"*"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -23,10 +22,6 @@
 			{
 				"command": "aldpage.Header",
 				"title": "导入头部组件"
-			},
-			{
-				"command": "aldpage.smartImport",
-				"title": "阿拉盯智能导入"
 			}
 		],
 		"menus": {
@@ -40,29 +35,24 @@
 				"when": "editorFocus",
 				"command": "aldpage.Header",
 				"group": "import_1"
-				},
-				{
-                    "when": "editorFocus",
-                    "command": "aldpage.smartImport",
-                    "group": "import_2"
-                }
+				}
 			]
 		},
+		"snippets": [
+            {
+                "language": "javascript",
+                "path": "./snippets/javascript.json"
+            }
+        ],
 		"keybindings":[
-			{
-				"command": "aldpage.smartImport",
-				"key": "tab",
-                "when": "editorTextFocus"
-			}
+
+			
 		],
 		"configuration": {
-            "title": "%ext.smartImport.title%",
+            "title": "智能提示",
+			"type": "object",
             "properties": {
-                "smartenter.chars": {
-                    "type": "string",
-					"default": ")]}>/|;:=-,'\"",
-					"description": "%ext.smartImport.chars%"
-                }
+                
             }
         }
 	},
