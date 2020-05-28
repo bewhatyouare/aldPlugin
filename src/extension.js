@@ -25,8 +25,8 @@ function activate(context) {
 	//vscode.commands.registerTextEditorCommand 文本编辑器命令
 	const smart = vscode.commands.registerTextEditorCommand(
 		'aldpage.smartImport',
-		(document) => {
-			smartImport(document);
+		() => {
+			smartImport();
 		}
 	)
 	context.subscriptions.push(smart);
