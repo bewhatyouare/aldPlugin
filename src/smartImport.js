@@ -20,11 +20,29 @@ const smartImport = () => {
     if(tagScriptStart == -1 || vuejsStartIdx == -1 || curLineNo <= 0){
         return;
     }
+
     if(curLineNo > tagScriptStart && curLineNo < vuejsStartIdx){
-        
-        vscode.window.activeTextEditor.edit(editBuilder => {
-            editBuilder.insert(position, 'adfadfadsfads');
-        });
+        let lineText = editor.document.lineAt(position).text;//当前用户的输入
+        findImportPath(lineText,position)
+    }
+}
+const findImportPath = (lineText,position) => {
+    let rowNo = position.line;
+    
+    let curText = lineText.toLocaleLowerCase();
+    console.info(curText);
+    //智能引入的文件路径的配置文件
+    const json = require(`../snippets/importPath.json`);
+    for(let key in json){
+        let value = json[key];
+        if(~key.indexOf(curText)){
+            let range = new vscode.Range(rowNo, 0, rowNo,lineText.length)
+            vscode.window.activeTextEditor.edit(editBuilder => {
+                // editBuilder.insert(position,value.path);
+                editBuilder.replace(range, value.path);
+            });
+            break;
+        }
     }
 }
 module.exports = smartImport
