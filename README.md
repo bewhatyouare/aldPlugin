@@ -6,7 +6,7 @@ smartImport Vue code in Visual Studio Code:
 
 ![working](working.gif)
 <p align="center">
-  <img alt="VS Code in action" src="https://github.com/bewhatyouare/aldPlugin/working.gif">
+  <img alt="nl import" src="https://github.com/bewhatyouare/aldPlugin/blob/master/working.gif">
 </p>
 ## Usage
 Keyboard Shortcut: tab;
