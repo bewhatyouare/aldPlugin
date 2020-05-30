@@ -5,7 +5,9 @@ vue-smartImport for vscode
 smartImport Vue code in Visual Studio Code:
 
 ![working](working.gif)
-
+<p align="center">
+  <img alt="VS Code in action" src="https://github.com/bewhatyouare/aldPlugin/working.gif">
+</p>
 ## Usage
 Keyboard Shortcut: tab;
 Open context menu in vue, choose 导入客户端交互clientJs ;
