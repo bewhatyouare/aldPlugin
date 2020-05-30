@@ -4,7 +4,6 @@ vue-smartImport for vscode
 
 smartImport Vue code in Visual Studio Code:
 
-![working](working.gif)
 <p align="center">
   <img alt="nl import" src="https://github.com/bewhatyouare/aldPlugin/blob/master/working.gif">
 </p>
