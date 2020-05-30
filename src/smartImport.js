@@ -4,19 +4,14 @@ const importTool = require('./importTool.js')
 
 const smartImport = () => {
     const editor = vscode.window.activeTextEditor;
-
-    console.info(editor.selection.active);
     let position = editor.selection.active;
 
-    console.info('adfasdfs',position);
-
-    
     //找到script的开始标签
     const tagScriptStart = importTool.getLinePosition(editor.document, '<script>');
     //找到export default的位置
     const vuejsStartIdx = importTool.getLinePosition(editor.document,'export default');
     const curLineNo = position.line;//当前光标所在的行号
-    console.info(tagScriptStart,position.line,vuejsStartIdx);
+    //console.info(tagScriptStart,position.line,vuejsStartIdx);
     if(tagScriptStart == -1 || vuejsStartIdx == -1 || curLineNo <= 0){
         return;
     }
@@ -35,12 +30,18 @@ const findImportPath = (lineText,position) => {
     const json = require(`../snippets/importPath.json`);
     for(let key in json){
         let value = json[key];
-        if(~key.indexOf(curText)){
-            let range = new vscode.Range(rowNo, 0, rowNo,lineText.length)
-            vscode.window.activeTextEditor.edit(editBuilder => {
+        if(~key.toLocaleLowerCase().indexOf(curText)){
+            console.info(value.path);
+            if(value.isComponent){
+                importTool.addComponent(key,value.path,rowNo);
+            } else {
+                let range = new vscode.Range(rowNo, 0, rowNo,lineText.length);
+                vscode.window.activeTextEditor.edit(editBuilder => {
+                    editBuilder.replace(range, value.path);
+                });
+
+            }
                 // editBuilder.insert(position,value.path);
-                editBuilder.replace(range, value.path);
-            });
             break;
         }
     }
