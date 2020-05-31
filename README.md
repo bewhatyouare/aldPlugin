@@ -1,4 +1,4 @@
-#smart-import
+#smartimport
 
 ## Features
 
@@ -8,7 +8,7 @@ smartImport Vue code in Visual Studio Code:
   <img alt="nl import" src="https://github.com/bewhatyouare/aldPlugin/blob/master/working.gif">
 </p>
 ## Usage
-Keyboard Shortcut: tab;
+
 Open context menu in vue, choose 导入客户端交互clientJs ;
 在vue文件中输入要导入包的名字后，按tab键
 
