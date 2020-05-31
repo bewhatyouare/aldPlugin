@@ -1,4 +1,4 @@
-vue-smartImport for vscode
+#smart-import
 
 ## Features
 

@@ -1,9 +1,9 @@
 {
-	"name": "smartimport",
-	"displayName": "smartImport",
+	"name": "smart-import",
+	"displayName": "smart-import",
 	"publisher": "qhuang",
 	"description": "fast generate ald page ",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"engines": {
 		"vscode": "^1.44.0"
 	},
@@ -13,6 +13,7 @@
 	"activationEvents": [
 		"*"
 	],
+	"icon": "img/logo.png",
 	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
