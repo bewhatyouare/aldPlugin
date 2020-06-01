@@ -22,7 +22,6 @@
     },
     "NlDropdown":{
         "path":"import NlDropdown from 'components/common/NlDropdown/dropdown.js';\n",
-        "isComponent":true,
         "desc":"下拉框组件"
     },
     "NoDataPage":{
