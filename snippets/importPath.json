@@ -37,5 +37,14 @@
     "NlButton":{
         "path":"import NlButton from 'components/common/NlButton';\n",
         "desc":"通用按钮"
+    },
+    "sign":{
+        "path":"import sign from 'components/common/Sign';\n",
+        "isComponent":true,
+        "desc":"签名组件"
+    },
+    "Qcode":{
+        "path":"import Qcode from '@/panComponents/common/Qcode.vue';\n",
+        "desc":"扫码组件"
     }
 }
