@@ -3,7 +3,7 @@
 	"displayName": "smartimport",
 	"publisher": "qhuang",
 	"description": "fast generate ald page ",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"engines": {
 		"vscode": "^1.44.0"
 	},
@@ -53,7 +53,8 @@
 		"keybindings": [
 			{
 				"command": "aldpage.smartImport",
-				"key": "tab",
+				"key": "ctrl+tab",
+        		"mac": "cmd+tab",
 				"when": "editorTextFocus && resourceLangId == vue"
 			}
 		]

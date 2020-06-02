@@ -11,7 +11,7 @@ smartImport Vue code in Visual Studio Code:
 
 Open context menu in vue, choose 导入客户端交互clientJs ;
 在vue文件中输入要导入包的名字后，按tab键。
-  例如要导入下拉框，输入nldrop+tab键，即能添加如下代码：
+  例如要导入下拉框，输入nldrop+（ctrl + tab）键，即能添加如下代码：
     import NlDropdown from 'components/common/NlDropdown/dropdown.js
 
 ## Keyboard Shortcut
@@ -19,7 +19,8 @@ Use the following to embed a beautify shortcut in keybindings.json. Replace with
 
     {
         "command": "aldpage.smartImport",
-        "key": "tab",
+        "key": "ctrl+tab",
+        "mac": "cmd+tab",
         "when": "editorTextFocus && resourceLangId == vue"
     }
 
